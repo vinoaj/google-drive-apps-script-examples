@@ -18,20 +18,20 @@ var cleanedValues = substituteValues(dataValues, RE_CLEANUP, "");
 dataRange.setValues(cleanedValues);
 
 
- /**
-  * Replace values in an 2D array
-  * @param {array} 2D array to be transformed
-  * @param {re} regular expression to evaluate in the existing data
-  * @param {string} replacement string
-  */
- function substituteValues(arr, re, replacement) {
-    for (var row in arr) {
-     var replacedVals = arr[row].map(function(origVal) {
-       return origVal.replace(re, replacement);
-     });
+/**
+* Replace values in an 2D array
+* @param {array} 2D array to be transformed
+* @param {re} regular expression to evaluate in the existing data
+* @param {string} replacement string
+*/
+function substituteValues(arr, re, replacement) {
+  for (var row in arr) {
+   var replacedVals = arr[row].map(function(origVal) {
+     return origVal.replace(re, replacement);
+   });
 
-     arr[row] = replacedVals;
-   }
-
-   return arr;
+   arr[row] = replacedVals;
  }
+
+ return arr;
+}
