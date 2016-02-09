@@ -17,6 +17,25 @@ var dataValues = dataRange.getValues();
 var cleanedValues = substituteValues(dataValues, RE_CLEANUP, "");
 dataRange.setValues(cleanedValues);
 
+/**
+ * Trim text in a given column
+ * @param {sheetName} sheet name
+ * @param {column} column letter
+ */
+
+function trimValues(sheetName, column) {
+ var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+ var columnRange = column + ':' + column;
+ var values = sheet.getRange(columnRange);
+
+ var numRows = values.getNumRows();
+ for (var i = 1; i <= numRows; i++) {
+   var currentValue = values.getCell(i,1).getValue();
+   var withString = currentValue.trim();
+   values.getCell(i,1).setValue(withString);
+ }
+
+}
 
 /**
 * Replace values in an 2D array
