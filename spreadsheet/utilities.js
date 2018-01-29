@@ -1,6 +1,7 @@
 /**
  * @fileoverview Utility functions for working with Google Sheets
  * @author vinoaj@gmail.com (Vinoaj Vijeyakumaar)
+ * @copyright Vinoaj Vijeyakumaar 2018
  */
 
 

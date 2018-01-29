@@ -1,6 +1,7 @@
 /**
  * @fileoverview Transform data in a Range
  * @author vinoaj@gmail.com (Vinoaj Vijeyakumaar)
+ * @copyright Vinoaj Vijeyakumaar 2018
  */
 
 /**@const */ var RE_CLEANUP = /undefined|NOT_FOUND/g
