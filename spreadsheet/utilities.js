@@ -11,7 +11,7 @@
  * @param {number} rowIx Row index of the header. Defaults to 1 (first row).
  */
 function getHeaderRow(sheet, rowIx) {
-    var rowIx = rowIx || 1;
+    rowIx = rowIx || 1;
     var headerRow = sheet.getRange(rowIx, 1, 1, sheet.getLastColumn());
     return headerRow.getValues()[0];
 }
