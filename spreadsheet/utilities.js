@@ -42,6 +42,26 @@ function setCellValue(value, sheet, rowIx, colIx) {
 
 
 /**
+ * Deletes a sheet's rows based on whether a mark (e.g. "x") exists in a defined
+ *   column in that row
+ * @param {Sheet} sheet The sheet from which to delete marked rows
+ * @param {number} colIx The column to scan - 1-based numbering
+ * @param {number} mark The mark to look for
+ */
+function deleteMarkedRows(sheet, colIx, mark) {
+    var data = sheet.getDataRange().getValues();
+
+    // Iterate through the data in reverse order
+    for (var r = data.length - 1; r > -1; r--) {
+      var cellData = data[r][colIx-1];
+      if (cellData && cellData == mark) {
+        sheet.deleteRow(r + 1);
+      }
+    }
+  }
+
+
+/**
 * Unhides all hidden rows in a sheet.
 * @param {Sheet} sheet Sheet that row will be appended to
 */
