@@ -42,6 +42,24 @@ function setCellValue(value, sheet, rowIx, colIx) {
 
 
 /**
+ * Deletes all data from a sheet except for the header row
+ * @param {Sheet} sheet The sheet which contains the cell
+ * @param {number} rowIx Header row's position - 1-based numbering
+ */
+function deleteData(sheet, rowIx) {
+    rowIx = rowIx || 1;
+    var dataRange = sheet.getDataRange();
+    var nRows = dataRange.getNumRows();
+
+    dataRangeToClear = sheet.getRange(rowIx + 1, 1, nRows - rowIx, 
+        sheet.getLastColumn());
+
+    // clearContent() maintains the formatting in the data range's cells
+    dataRangeToClear.clearContent();
+}
+
+
+/**
  * Deletes a sheet's rows based on whether a mark (e.g. "x") exists in a defined
  *   column in that row
  * @param {Sheet} sheet The sheet from which to delete marked rows
