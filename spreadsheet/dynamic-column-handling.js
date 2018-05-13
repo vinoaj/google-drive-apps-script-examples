@@ -103,3 +103,31 @@ function getHeaderRow(sheet, rowIx) {
     var headerRow = sheet.getRange(rowIx, 1, 1, sheet.getLastColumn());
     return headerRow.getValues()[0];
 }
+
+
+/**
+ * Append a row to the spreadsheet based on an object of key-value pairs
+ * @param {Sheet} sheet Sheet to append data to
+ * @param {Object} dataObj JSON object of key-value pairs to append to the sheet
+ */
+function appendRowObject(sheet, dataObj) {
+  var rowData = new Array(dataObj.length);
+
+  for (var key in dataObj) {
+    rowData[METADATA[key].columnIx-1] = dataObj[key];
+  }
+  
+  appendRow(sheet, rowData);
+}
+
+
+/**
+* Append a new row of data to the spreadsheet
+* @param {Sheet} sheet Sheet that row will be appended to
+* @param {string[]} dataArray 1-dimensional array of data
+*/
+function appendRow(sheet, dataArray) {
+  var lastRow = sheet.getLastRow();
+  var range = sheet.getRange(lastRow + 1, 1, 1, dataArray.length);
+  range.setValues([dataArray]);
+}
