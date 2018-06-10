@@ -72,6 +72,18 @@ function generateColumnIndices() {
 
 
 /**
+ * Get the header row for a sheet
+ * @param {Sheet} sheet Sheet that the header row will be read from
+ * @param {number} rowIx Row index of the header. Defaults to 1 (first row).
+ */
+function getHeaderRow(sheet, rowIx) {
+  rowIx = rowIx || 1;
+  var headerRow = sheet.getRange(rowIx, 1, 1, sheet.getLastColumn());
+  return headerRow.getValues()[0];
+}
+
+
+/**
  * Example function that fetches values by referencing a column ID rather than
  *     a column's index
  */
@@ -90,18 +102,6 @@ function generateURLs() {
     
     Logger.log(url, source, medium, campaign, term, content);
   }
-}
-
-
-/**
- * Get the header row for a sheet
- * @param {Sheet} sheet Sheet that the header row will be read from
- * @param {number} rowIx Row index of the header. Defaults to 1 (first row).
- */
-function getHeaderRow(sheet, rowIx) {
-    rowIx = rowIx || 1;
-    var headerRow = sheet.getRange(rowIx, 1, 1, sheet.getLastColumn());
-    return headerRow.getValues()[0];
 }
 
 
