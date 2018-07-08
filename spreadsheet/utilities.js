@@ -30,6 +30,18 @@ function appendRow(sheet, dataArray) {
 
 
 /**
+ * Replace the contents of a row
+ * @param {Sheet} sheet Sheet that the row will be replaced in
+ * @param {number} rowIx Row index of the row to be replaced
+ * @param {string[]} dataArray 1-dimensional array of data
+ */
+function replaceRow(sheet, rowIx, dataArray) {
+    var range = sheet.getRange(rowIx, 1, 1, dataArray.length);
+    range.setValues([dataArray]);
+}
+
+
+/**
  * Sets the value for a given cell
  * @param {object} value The value to be inserted into the cell
  * @param {Sheet} sheet The sheet which contains the cell
